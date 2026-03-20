@@ -22,11 +22,11 @@ public class CheckingAccount implements HasMenu{
 	public void start(){
 	
 	}
-	public double geetBalance(){
+	public double getBalance(){
 		return balance;
 	}
 	public String getBalanceString(){
-		return Sting.format("$%.2f", balance);
+		return String.format("$%.2f", balance);
 	}
 	public void setBalance(double balance){
 		this.balance = balance;
