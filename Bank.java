@@ -12,6 +12,7 @@ public class Bank implements HasMenu{
 	public Bank(){
 		admin = new Admin();
 		customers = new CustomerList();
+		loadData();//Load customer data
 	}
 
 	//Bank menu
@@ -37,6 +38,7 @@ public class Bank implements HasMenu{
 				customerLogin();
 			}
 			else if (choice == 0){
+				saveData();
 				System.out.println("Exiting system");
 			}
 			else {
@@ -179,6 +181,26 @@ public class Bank implements HasMenu{
 			else {
 				System.out.println("Invalid input.");
 			}
+		}
+
+	}
+	//Save and load customer data file.
+	//I looked up some stuff for the loading part, I just really struggled to figure out the proper formatting.
+	public void saveData(){
+		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("customer.dat"))){
+			out.wrtieObject(customers);
+			Sysem.out.println("Customer data saved.");
+		} catch (Exception e){
+			System.out.println("Error saving customer data.");
+		}
+	}
+
+	public void loadData(){
+		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("customer.dat"))){
+			customers = (CustomersList) in.readObject();
+			System.out.println("Customer data loaded.");
+		} catch (Exception e){
+			System.out.println("No save data found.");
 		}
 	}
 }
