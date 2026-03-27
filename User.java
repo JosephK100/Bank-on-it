@@ -1,5 +1,5 @@
 //User.java(abstract)
-import.java.io.Serializable;
+import java.io.Serializable;
 
 public abstract class User implements HasMenu, Serializable{
 	protected String userName;
