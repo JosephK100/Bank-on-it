@@ -127,9 +127,9 @@ public class Bank implements HasMenu{
 	}
 
 	//Customer login
-	privtae void customerLogin(){
+	private void customerLogin(){
 		Scanner sc = new Scanner(System.in);
-		SYstem.out.print("Enter customer name: ");
+		System.out.print("Enter customer name: ");
 		String name = sc.nextLine();
 
 		System.out.print("Enter customer PIN: ");
@@ -167,7 +167,7 @@ public class Bank implements HasMenu{
 				System.out.print("Enter new PIN: ");
 				int newPin = sc.nextInt();
 				sc.nextLine();
-				c.changePn(newPin);
+				c.changePIN(newPin);
 				System.out.println("Pin updated.");
 			}
 			else if (choice == 4){
@@ -177,8 +177,8 @@ public class Bank implements HasMenu{
 				System.out.println("Exiting customer menu");
 			}
 			else {
-				System.out.print;n("Invalid input.");
+				System.out.println("Invalid input.");
 			}
 		}
-	
+	}
 }
