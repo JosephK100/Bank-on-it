@@ -40,5 +40,11 @@ public class Customer extends User{
 	public SavingsAccount getSavings(){
 		return savings;
 	}
+
+	public String toString(){
+		return "Customer: " + userName +
+			"\nChecking Balance: " + checking.getBalance() +
+			"\nSavings Balance : " + savings.getBalance() + "\n";
+	}
 }
 

@@ -9,7 +9,7 @@ public class Admin extends User{
 	public String menu(){
 		return "\nAdmin Menu\n"
 			+ "0) Exit\n"
-			+ "1)Full Customer Report\n"
+			+ "1) Full Customer Report\n"
 			+ "2) Add User\n"
 			+ "3) Apply Interest\n";
 	}
