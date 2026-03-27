@@ -34,7 +34,7 @@ public class Bank implements HasMenu{
 				adminLogin();
 			}
 			else if (choice == 2){
-				System.out.println("Login as customer pressed");
+				customerLogin();
 			}
 			else if (choice == 0){
 				System.out.println("Exiting system");
@@ -45,6 +45,7 @@ public class Bank implements HasMenu{
 		}
 	}
 
+	//Admin methods
 	private void adminLogin(){
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter admin username: ");
@@ -124,4 +125,60 @@ public class Bank implements HasMenu{
 		}
 		System.out.println("Interest applied to all savings accounts.");
 	}
+
+	//Customer login
+	privtae void customerLogin(){
+		Scanner sc = new Scanner(System.in);
+		SYstem.out.print("Enter customer name: ");
+		String name = sc.nextLine();
+
+		System.out.print("Enter customer PIN: ");
+		int pin = sc.nextInt();
+		sc.nextLine();
+
+		for (Customer c : customers){
+			if (c.getUserName().equals(name) && c.getPin() == pin){
+				System.out.println("Customer login successful.");
+				startCustomer(c);
+				return;
+			}
+		}
+		System.out.println("Customer login failed.");
+	}
+
+	//Customer menu
+	private void startCustomer(Customer c){
+		Scanner sc = new Scanner(System.in);
+		int choice = -1;
+
+		while (choice != 0){
+			System.out.println(c.menu());
+			System.out.print("Action: ");
+			choice = sc.nextInt();
+			sc.nextLine();
+
+			if (choice == 1){
+				c.getChecking().makeDeposit();
+			}
+			else if (choice == 2){
+				c.getSavings().makeDeposit();
+			}
+			else if (choice == 3){
+				System.out.print("Enter new PIN: ");
+				int newPin = sc.nextInt();
+				sc.nextLine();
+				c.changePn(newPin);
+				System.out.println("Pin updated.");
+			}
+			else if (choice == 4){
+				System.out.println(c.getReport());
+			}
+			else if (choice == 0){
+				System.out.println("Exiting customer menu");
+			}
+			else {
+				System.out.print;n("Invalid input.");
+			}
+		}
+	
 }
