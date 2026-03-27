@@ -5,7 +5,7 @@ public class SavingsAccount extends CheckingAccount{
 	
 	public SavingsAccount(){
 		super();
-		interestRate = 0.1;
+		interestRate = 0.01;
 	}
 
 	public void setInterestRate(double rate){
@@ -15,12 +15,14 @@ public class SavingsAccount extends CheckingAccount{
 	public double getInterestRate(){
 		return interestRate;
 	}
-
-	public void calculateInterest(){
-		double interest = getBalance() * interestRate;
-	}
+//(Ended up not using calInterest())
+//	public void calculateInterest(){
+//		double interest = getBalance() * interestRate;
+//	}
 
 	public void applyInterest(){
 		double interest = getBalance() * interestRate;
 		deposit(interest);
+	}
 }
+

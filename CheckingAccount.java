@@ -88,4 +88,7 @@ public class CheckingAccount implements HasMenu{
 		System.out.println("Checking balance...");
 		System.out.println("Current balance: " + getBalanceString());
 	}
+	public void deposit(double amount){
+		balance += amount;
+	}
 }
