@@ -1,6 +1,6 @@
 //Bank.java
 //(Will be handling most if not all the logic)
-
+import java.io.*;
 import java.util.Scanner;
 
 public class Bank implements HasMenu{
@@ -187,17 +187,17 @@ public class Bank implements HasMenu{
 	//Save and load customer data file.
 	//I looked up some stuff for the loading part, I just really struggled to figure out the proper formatting.
 	public void saveData(){
-		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("customer.dat"))){
-			out.wrtieObject(customers);
-			Sysem.out.println("Customer data saved.");
+		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("customers.dat"))){
+			out.writeObject(customers);
+			System.out.println("Customer data saved.");
 		} catch (Exception e){
 			System.out.println("Error saving customer data.");
 		}
 	}
 
 	public void loadData(){
-		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("customer.dat"))){
-			customers = (CustomersList) in.readObject();
+		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("customers.dat"))){
+			customers = (CustomerList) in.readObject();
 			System.out.println("Customer data loaded.");
 		} catch (Exception e){
 			System.out.println("No save data found.");
