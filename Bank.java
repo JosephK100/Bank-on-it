@@ -53,7 +53,7 @@ public class Bank implements HasMenu{
 		System.out.print("Enter admin PIN: ");
 		String pin = sc.nextLine();
 
-		if (user.equals(admin.getUserName()) && pin.equals(admin.getPin())){
+		if (user.equals(admin.getUserName()) && Integer.parseInt(pin) == admin.getPin()){
 			System.out.println("Login successful.");
 			startAdmin();
 		} else {
