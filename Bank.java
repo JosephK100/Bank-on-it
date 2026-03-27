@@ -1,6 +1,8 @@
 //Bank.java
 //(Will be handling most if not all the logic)
 
+import java.util.Scanner;
+
 public class Bank implements HasMenu{
 	//Instance variables derrived from the bank class in the UML
 	private Admin admin;
@@ -42,4 +44,4 @@ public class Bank implements HasMenu{
 			}
 		}
 	}
-
+}
