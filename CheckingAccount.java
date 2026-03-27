@@ -53,7 +53,7 @@ public class CheckingAccount implements HasMenu{
 		System.out.print("How much would you like to deposit? ");
 		double amt = getDouble();
 		balance += amt;
-		System.out.println("New balance: " + getBalance());
+		System.out.println("New balance: " + String.format("%.2f", getBalance()));
 	}
 	//Handles withdrawals and prints the new balance.
 	public void makeWithdrawal(){
@@ -61,7 +61,7 @@ public class CheckingAccount implements HasMenu{
 		System.out.print("How much would you like to withdraw? ");
 		double amt = getDouble();//Read the double from the user
 		balance -= amt;//Subtract entered amount
-		System.out.println("New balance: " + getBalance());
+		System.out.println("New balance: " + String.format("%.2f", getBalance()));
 	}
 	//Safely read a double from the user without crashing the program
 	private double getDouble(){

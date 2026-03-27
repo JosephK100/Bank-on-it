@@ -23,6 +23,7 @@ public class SavingsAccount extends CheckingAccount{
 	public void applyInterest(){
 		double interest = getBalance() * interestRate;
 		deposit(interest);
+		System.out.println("New balance: " + String.format("%.2f", getBalance()));
 	}
 }
 
