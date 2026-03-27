@@ -1,6 +1,7 @@
 //Customer.java (extends user)
+import java.io.Serializable;
 
-public class Customer extends User{
+public class Customer extends User implements Serializable{
 	private CheckingAccount checking;
 	private SavingsAccount savings;
 

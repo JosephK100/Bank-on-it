@@ -1,6 +1,7 @@
 import java.util.Scanner;
+import java.io.Serializable;
 
-public class CheckingAccount implements HasMenu{
+public class CheckingAccount implements HasMenu, Serializable{
 	//Sotes the current balance for this checking account
 	private double balance;
 	//Basic constructor with a starting balance of 0.0
