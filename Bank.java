@@ -11,8 +11,11 @@ public class Bank implements HasMenu{
 	//Constructor
 	public Bank(){
 		admin = new Admin();
-		customers = new CustomerList();
 		loadData();//Load customer data
+		
+		if (customers == null){
+			customers = new CustomerList();
+		}
 	}
 
 	//Bank menu
