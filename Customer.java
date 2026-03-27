@@ -30,7 +30,7 @@ public class Customer extends User{
 	public String getReport(){
 		return "Customer: " + userName
 			+ "\nChecking Balance: " + checking.getBalance()
-			+ "\nSavings Balance: " + savings.getBalacne();
+			+ "\nSavings Balance: " + savings.getBalance();
 	}
 
 	public CheckingAccount getChecking(){

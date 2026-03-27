@@ -3,8 +3,7 @@
 //Constructor that sets default user name and PIN.
 public class Admin extends User{
 	public Admin(){
-		this.userName = "admin";
-		this.pin = "0000";
+		super("admin", 0000);
 	}
 
 	public String menu(){
