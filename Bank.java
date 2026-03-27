@@ -104,10 +104,11 @@ public class Bank implements HasMenu{
 		System.out.print("Enter customer name: ");
 		String name = sc.nextLine();
 
-		System.out.print("Enter customer ID: ");
-		String id = sc.nextLine();
+		System.out.print("Enter customer PIN: ");
+		int pin = sc.nextInt();
+	        sc.nextLine();
 
-		Customer c = new Customer(name, id);
+		Customer c = new Customer(name, pin);
 		customers.add(c);
 
 		System.out.println("Customer added succesfully.");
