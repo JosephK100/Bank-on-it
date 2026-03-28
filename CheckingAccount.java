@@ -45,6 +45,7 @@ public class CheckingAccount implements HasMenu, Serializable{
 		}
 	    }
 	}
+	//Reutrns the balance value
 	public double getBalance(){
 		return balance;
 	}

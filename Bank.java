@@ -5,16 +5,19 @@ import java.util.Scanner;
 
 public class Bank implements HasMenu{
 	//Instance variables derrived from the bank class in the UML
+	//Admin object and a list of all the customers.
 	private Admin admin;
 	private CustomerList customers;
 
-	//Constructor
+	//Constructor - Intitalizes admin and tries to laod customer data.
+	//If there's no data to load, make a new customer list (empty)
 	public Bank(){
 		admin = new Admin();
-		loadData();//Load customer data
+		loadData();//Try to load customer data
 		
 		if (customers == null){
 			customers = new CustomerList();
+			//Load a brand new list if no saved data is found.
 		}
 	}
 
@@ -27,6 +30,7 @@ public class Bank implements HasMenu{
 	}
 
 	//Bank main loop
+	//Handles the bank menu and user choices
 	public void start(){
 		Scanner sc = new Scanner(System.in);
 		int choice = -1;
@@ -41,7 +45,7 @@ public class Bank implements HasMenu{
 				customerLogin();
 			}
 			else if (choice == 0){
-				saveData();
+				saveData();//Save customer data before exiting the menu.
 				System.out.println("Exiting system");
 			}
 			else {
@@ -59,6 +63,7 @@ public class Bank implements HasMenu{
 		System.out.print("Enter admin PIN: ");
 		String pin = sc.nextLine();
 
+		//Check user credentials and notify if they were accpeted or denied 
 		if (user.equals(admin.getUserName()) && Integer.parseInt(pin) == admin.getPin()){
 			System.out.println("Login successful.");
 			startAdmin();
@@ -67,6 +72,8 @@ public class Bank implements HasMenu{
 		}
 	}
 
+	//Admin menu 
+	//Allows the admin user to execute reports, add users, and apply interest.
 	private void startAdmin(){
 		Scanner sc = new Scanner(System.in);
 		int choice = -1;
@@ -94,6 +101,7 @@ public class Bank implements HasMenu{
 			}
 		}
 	}
+	//Print all customers and their current balance and savings.
 	private void fullCustomerReport(){
 		System.out.println("\n--Full Customer Report--");
 		if (customers.isEmpty()){
@@ -105,6 +113,7 @@ public class Bank implements HasMenu{
 			System.out.println(c);
 		}
 	}
+	//Add a new customer to the system
 	private void addUser(){
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter customer name: ");
@@ -120,6 +129,7 @@ public class Bank implements HasMenu{
 		System.out.println("Customer added succesfully.");
 	}
 
+	//Applies interest to all the current savings accounts.
 	private void applyInterest(){
 		if (customers.isEmpty()){
 			System.out.println("No customers to apply interest to.");
@@ -131,7 +141,9 @@ public class Bank implements HasMenu{
 		System.out.println("Interest applied to all savings accounts.");
 	}
 
-	//Customer login
+	//Customer methods
+	//Customer login - Handled by matching name and PIN.
+	//Checked via string and int comparison 
 	private void customerLogin(){
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter customer name: ");
@@ -141,6 +153,7 @@ public class Bank implements HasMenu{
 		int pin = sc.nextInt();
 		sc.nextLine();
 
+		//Search the customer list for a mathcing customer
 		for (Customer c : customers){
 			if (c.getUserName().equals(name) && c.getPin() == pin){
 				System.out.println("Customer login successful.");
@@ -151,7 +164,8 @@ public class Bank implements HasMenu{
 		System.out.println("Customer login failed.");
 	}
 
-	//Customer menu
+	//Customer menu loop.
+	//Allows for deposits, PIN changes, and viewing reports.
 	private void startCustomer(Customer c){
 		Scanner sc = new Scanner(System.in);
 		int choice = -1;
@@ -189,6 +203,7 @@ public class Bank implements HasMenu{
 	}
 	//Save and load customer data file.
 	//I looked up some stuff for the loading part, I just really struggled to figure out the proper formatting.
+	//Saves customer data to a customer.dat file via serialization.
 	public void saveData(){
 		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("customers.dat"))){
 			out.writeObject(customers);
@@ -198,6 +213,7 @@ public class Bank implements HasMenu{
 		}
 	}
 
+	//Loads customer data from the customer.dat file (If the file already exists.
 	public void loadData(){
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("customers.dat"))){
 			customers = (CustomerList) in.readObject();
