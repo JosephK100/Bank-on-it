@@ -1,5 +1,5 @@
 //HasMenu
 public interface HasMenu{
-	String menu();
-	void start();
+	String menu();//Returns menu and text options
+	void start();//Runs menu loop 
 }
